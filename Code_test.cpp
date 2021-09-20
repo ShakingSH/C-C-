@@ -86,6 +86,7 @@ bool CodeTest::Divide(int &index)
 	else if(str_line_[index] == '&' || str_line_[index] == '*') return true;  // 遇到指针或引用切割
     else if(str_line_[index] == '\n'|| str_line_[index] == '\0' || str_line_[index] == '\t') return true;  // 遇到换行符、指标符、字符串结尾标识符切割
     else if(str_line_[index] == ' ' || str_line_[index] == ',' || str_line_[index] == ';' || str_line_[index] == ':') return true;  // 遇到标点符号或空格切割
+	return false;
 }
 
 // 对被切下来的单元进行关键词检测
@@ -222,8 +223,8 @@ int main()
 {
     CodeTest *t = new CodeTest();  // 创建CodeTest对象准备进行代码检测
     string infilename;  // 待检测文件名
-    int level;  // 完成等级
-    cin>>infilename>>level;
+    int level;
+	cin>>infilename>>level;
     t->TestFile(infilename); // 调用检测函数
     t->Display(level);  // 按完成等级输出
     return 0;
